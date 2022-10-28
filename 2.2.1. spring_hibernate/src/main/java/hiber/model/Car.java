@@ -16,17 +16,15 @@ public class Car {
     @Column (name = "series")
     private int series;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId")
-    private User userCar;
+    @OneToOne(mappedBy = "myCar")
+    private User user;
 
     public Car() {
     }
     @Autowired
-    public Car(String model, int series, User userCar) {
+    public Car(String model, int series) {
         this.model = model;
         this.series = series;
-        this.userCar = userCar;
     }
 
     public String getModel() {
